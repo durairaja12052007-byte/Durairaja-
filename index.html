@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance - Fashion Dress Models Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #faf7f5 0%, #ffffff 100%);
+            color: #2d2d2d;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .elegant-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .secondary-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .dress-card {
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dress-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dress-image {
+            transition: all 0.5s ease;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .dress-card:hover .dress-image {
+            transform: scale(1.02);
+        }
+        
+        .category-badge {
+            background: linear-gradient(135deg, #d4af37, #f4e4b3);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #e8c4c4, #d8a8a8);
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #2d2d2d;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .color-swatch {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 3px;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.3);
+        }
+        
+        .color-swatch.active {
+            transform: scale(1.4);
+            box-shadow: 0 0 0 3px #d4af37;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .nav-item {
+            position: relative;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+        
+        .nav-item.active {
+            background: linear-gradient(135deg, #e8c4c4, #d8a8a8);
+            color: #2d2d2d;
+        }
+        
+        .nav-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #d4af37, #e8c4c4, #d8a8a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .model-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 2rem 1.5rem 1rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .dress-card:hover .model-overlay {
+            transform: translateY(0);
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .spec-item {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 0.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        .hero-pattern {
+            background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.15), transparent 40%),
+                        radial-gradient(circle at 80% 20%, rgba(232, 196, 196, 0.15), transparent 40%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-gold-400 to-pink-200 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-crown text-white text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl elegant-font font-semibold text-gray-800">Elegance</h1>
+                </div>
+                
+                <nav class="hidden md:flex items-center space-x-2 bg-white/80 rounded-full p-1 shadow-inner">
+                    <button class="nav-item active" data-category="all">All Collections</button>
+                    <button class="nav-item" data-category="evening">Evening Wear</button>
+                    <button class="nav-item" data-category="bridal">Bridal</button>
+                    <button class="nav-item" data-category="casual">Casual</button>
+                    <button class="nav-item" data-category="cocktail">Cocktail</button>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="p-3 rounded-full hover:bg-pink-50 transition-colors relative">
+                        <i class="fas fa-heart text-pink-400 text-lg"></i>
+                        <span class="absolute -top-1 -right-1 w-5 h-5 bg-pink-400 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                    <button class="p-3 rounded-full hover:bg-pink-50 transition-colors relative">
+                        <i class="fas fa-shopping-bag text-gray-700 text-lg"></i>
+                        <span class="absolute -top-1 -right-1 w-5 h-5 bg-gold-500 text-white text-xs rounded-full flex items-center justify-center">2</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden hero-pattern">
+        <div class="container mx-auto px-4 py-20 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-7xl font-bold mb-6 gradient-text elegant-font">Where Elegance Meets Style</h2>
+                <p class="text-xl text-gray-600 mb-8 secondary-font">Discover our exquisite collection of fashion dresses curated for the modern woman</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+                        Explore Collection
+                    </button>
+                    <button class="border-2 border-gold-500 text-gray-700 px-8 py-4 rounded-full font-semibold hover:bg-gold-50 transition-all transform hover:scale-105">
+                        New Arrivals
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute top-0 left-0 w-full h-full -z-10">
+            <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-pink-200/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 right-1/4 w-96 h-96 bg-gold-200/20 rounded-full blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- Dress Models Grid -->
+    <main class="container mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+            <h3 class="text-4xl font-bold mb-4 elegant-font text-gray-800">Fashion Dress Collection</h3>
+            <p class="text-gray-600 max-w-2xl mx-auto secondary-font text-lg">Browse through our stunning collection of dresses designed for every occasion and style</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="dress-grid">
+            <!-- Evening Gown 1 -->
+            <div class="dress-card fade-in-up" data-category="evening">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/719acff1-4263-4d02-be46-eb00d2ff1b1e.png" alt="Elegant black velvet evening gown with crystal embellishments, off-shoulder design, and mermaid silhouette on runway model" class="dress-image w-full h-80 object-cover" />
+                    <div class="model-overlay">
+                        <h4 class="text-lg font-semibold elegant-font">Midnight Velvet</h4>
+                        <p class="text-sm opacity-90">Evening Gown Collection</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="category-badge">Evening Wear</span>
+                        <span class="price-tag">₹32,999</span>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold elegant-font mb-2">Midnight Elegance</h4>
+                    <p class="text-gray-600 text-sm mb-4">Velvet gown with crystal detailing</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler combined text-gold-500 mb-1"></i>
+                            <p class="text-xs">Sizes: XS-XL</p>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-swatchbook text-gold-500 mb-1"></i>
+                            <p class="text-xs">Premium Velvet</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-1 mb-4">
+                        <div class="color-swatch active bg-black" data-color="black"></div>
+                        <div class="color-swatch bg-navy-800" data-color="navy"></div>
+                        <div class="color-swatch bg-burgundy-700" data-color="burgundy"></div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bridal Gown -->
+            <div class="dress-card fade-in-up" data-category="bridal">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67aaf1b4-f3f8-4566-8d7d-5e807a106d7d.png" alt="Stunning white bridal gown with intricate lace detailing, cathedral train, and pearl embroidery on model in wedding setting" class="dress-image w-full h-80 object-cover" />
+                    <div class="model-overlay">
+                        <h4 class="text-lg font-semibold elegant-font">Ivory Dream</h4>
+                        <p class="text-sm opacity-90">Bridal Collection</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="category-badge">Bridal</span>
+                        <span class="price-tag">₹89,999</span>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold elegant-font mb-2">Ivory Dream</h4>
+                    <p class="text-gray-600 text-sm mb-4">Lace bridal gown with train</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler text-gold-500 mb-1"></i>
+                            <p class="text-xs">Custom Sizing</p>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-swatchbook text-gold-500 mb-1"></i>
+                            <p class="text-xs">French Lace</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-1 mb-4">
+                        <div class="color-swatch active bg-ivory-100" data-color="ivory"></div>
+                        <div class="color-swatch bg-white" data-color="white"></div>
+                        <div class="color-swatch bg-champagne-200" data-color="champagne"></div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        <i class="fas fa-ring mr-2"></i>Reserve Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summer Dress -->
+            <div class="dress-card fade-in-up" data-category="casual">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/933dd089-7b26-4993-bf48-2341ac7fc4ae.png" alt="Floral print summer dress with ruffled sleeves, A-line silhouette, and lightweight fabric on model in garden setting" class="dress-image w-full h-80 object-cover" />
+                    <div class="model-overlay">
+                        <h4 class="text-lg font-semibold elegant-font">Garden Bloom</h4>
+                        <p class="text-sm opacity-90">Summer Collection</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="category-badge">Casual</span>
+                        <span class="price-tag">₹8,499</span>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold elegant-font mb-2">Garden Bloom</h4>
+                    <p class="text-gray-600 text-sm mb-4">Floral summer dress</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler text-gold-500 mb-1"></i>
+                            <p class="text-xs">Sizes: S-L</p>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-swatchbook text-gold-500 mb-1"></i>
+                            <p class="text-xs">Cotton Blend</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-1 mb-4">
+                        <div class="color-swatch active bg-pink-300" data-color="pink"></div>
+                        <div class="color-swatch bg-yellow-300" data-color="yellow"></div>
+                        <div class="color-swatch bg-blue-300" data-color="blue"></div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cocktail Dress -->
+            <div class="dress-card fade-in-up" data-category="cocktail">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47cd6aa2-ac63-4213-8a30-3e1958837f76.png" alt="Red cocktail dress with satin finish, sweetheart neckline, and fitted silhouette on model at upscale event" class="dress-image w-full h-80 object-cover" />
+                    <div class="model-overlay">
+                        <h4 class="text-lg font-semibold elegant-font">Scarlet Glam</h4>
+                        <p class="text-sm opacity-90">Cocktail Collection</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="category-badge">Cocktail</span>
+                        <span class="price-tag">₹18,999</span>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold elegant-font mb-2">Scarlet Glam</h4>
+                    <p class="text-gray-600 text-sm mb-4">Satin cocktail dress</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler text-gold-500 mb-1"></i>
+                            <p class="text-xs">Sizes: XS-L</p>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-swatchbook text-gold-500 mb-1"></i>
+                            <p class="text-xs">Premium Satin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-1 mb-4">
+                        <div class="color-swatch active bg-red-600" data-color="red"></div>
+                        <div class="color-swatch bg-black" data-color="black"></div>
+                        <div class="color-swatch bg-emerald-600" data-color="emerald"></div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Office Dress -->
+            <div class="dress-card fade-in-up" data-category="casual">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7a33a1d9-4f60-4102-bce3-078448ee5729.png" alt="Professional navy blue sheath dress with tailored fit, pencil silhouette, and office-appropriate length on business model" class="dress-image w-full h-80 object-cover" />
+                    <div class="model-overlay">
+                        <h4 class="text-lg font-semibold elegant-font">Executive</h4>
+                        <p class="text-sm opacity-90">Office Wear</p>
+                    </div>
+                </div>
+                
+               <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="category-badge">Professional</span>
+                        <span class="price-tag">₹12,999</span>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold elegant-font mb-2">Executive Elegance</h4>
+                    <p class="text-gray-600 text-sm mb-4">Tailored office dress</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler text-gold-500 mb-1"></i>
+                            <p class="text-xs">Sizes: XS-XL</p>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-swatchbook text-gold-500 mb-1"></i>
+                            <p class="text-xs">Wool Blend</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-1 mb-4">
+                        <div class="color-swatch active bg-navy-900" data-color="navy"></div>
+                        <div class="color-swatch bg-black" data-color="black"></div>
+                        <div class="color-swatch bg-gray-600" data-color="charcoal"></div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Party Dress -->
+            <div class="dress-card fade-in-up" data-category="evening">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/70b01462-4adb-4686-8171-286b26f4d0ab.png" alt="Sparkling silver sequin party dress with mini length, v-neck design, and disco ball effect on model at party venue" class="dress-image w-full h-80 object-cover" />
+                    <div class="model-overlay">
+                        <h4 class="text-lg font-semibold elegant-font">Disco Fever</h4>
+                        <p class="text-sm opacity-90">Party Collection</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="category-badge">Party Wear</span>
+                        <span class="price-tag">₹22,999</span>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold elegant-font mb-2">Disco Fever</h4>
+                    <p class="text-gray-600 text-sm mb-4">Sequin party dress</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fas fa-ruler text-gold-500 mb-1"></i>
+                            <p class="text-xs">Sizes: XS-L</p>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-swatchbook text-gold-500 mb-1"></i>
+                            <p class="text-xs">Sequin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-1 mb-4">
+                        <div class="color-swatch active bg-silver-300" data-color="silver"></div>
+                        <div class="color-swatch bg-gold-300" data-color="gold"></div>
+                        <div class="color-swatch bg-purple-300" data-color="purple"></div>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                        <i class="fas fa-shopping-bag mr-2"></i>Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Maxi Dress -->
+            <div class="dress-card fade-in-up" data-category="casual">
+                <div class="relative overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/acc8bbc9-dcf5-4cd5-9500-5aa84152e38c.png" alt="Bohemian maxi dress with ethnic print, flowy fabric, layered design, and bell sleeves on model
+<!-- partial -->
+  
+</body>
+</html>
